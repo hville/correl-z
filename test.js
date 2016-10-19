@@ -8,7 +8,7 @@ var ct = require('cotest'),
 
 var N = 5000
 
-function mapFcn(f) { return f(this) }
+function mapFcn(f) { return f(this) } /*eslint no-invalid-this: 0*/
 
 ct('mutually independent', () => {
 	var rnds = [ CZ([1,0]), CZ([0,1]) ],
