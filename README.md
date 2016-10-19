@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD004 MD007 MD010 MD041 MD022 MD024 MD032 MD036 -->
 # correl-z
 
-*correlated standard normal distribution **Z** random number generator*
+*correlated standard normal distribution random number generator*
 
 • [Example](#example) • [API](#api) • [License](#license)
 
