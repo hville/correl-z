@@ -1,0 +1,10 @@
+.git/
+.vscode/
+coverage/
+html-report/
+node_modules/
+notes/
+bld/
+old/
+info/
+*.log

@@ -1,0 +1,34 @@
+{
+  "name": "correl-z",
+  "version": "1.0.0",
+  "description": "correlated standard normal distribution random number generator",
+  "keywords": [
+    "Z", "unit normal", "standard normal",
+    "correlated", "correlation",
+    "random", "random number generator"
+  ],
+  "author": "Hugo Villeneuve",
+  "main": "./correl-z.js",
+  "private": false,
+  "dependencies": {
+    "random-z": "^1.0.0"
+  },
+  "devDependencies": {
+    "cholesky": "^1.1.0",
+    "cotest": "^1.6.1",
+    "grosso-modo": "^1.0.0",
+    "lazy-stats": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hville/correl-z.git"
+  },
+  "scripts": {
+    "test": "node test",
+    "prepublish": "npm test"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
