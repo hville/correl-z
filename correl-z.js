@@ -1,4 +1,4 @@
-var rndZ = require('random-z')
+const rndZ = require('random-z')
 
 module.exports = correlZ
 
@@ -9,23 +9,25 @@ module.exports = correlZ
  * @returns {Function} - simulator
  */
 function correlZ(iidWeights) {
-	if (!Array.isArray(iidWeights)) throw Error('iidWeights must be an Array of numbers')
-
-	var intW = getInternalWeight(iidWeights)
-	if (isNaN(intW)) throw Error('sum of the iid factors squares must be less than 1')
+	const intW = getInternalWeight(iidWeights)
+	if (Number.isNaN(intW)) throw Error('sum of the iid factors squares must be less than 1')
 
 	return function random(iidZs, selfZ) {
-		if (!Array.isArray(iidZs)) throw Error('iidZs must be an Array of numbers')
-		if (iidZs.length < iidWeights.length) throw Error('missing seed values for the provided weights')
-
-		var res = (selfZ === undefined ? rndZ() : selfZ) * intW
-		for (var i=0; i<iidWeights.length; ++i) res += iidZs[i] * iidWeights[i]
+		let res = (selfZ === undefined ? rndZ() : selfZ) * intW
+		for (let i=0; i<iidWeights.length; ++i) {
+			if (iidWeights[i] !== 0) res += iidZs[i] * iidWeights[i]
+		}
+		if (isNaN(res)) throw Error('invalid risk weights or seed values')
 		return res
 	}
 }
 function getInternalWeight(extW) {
-	for (var i=0, t=1; i<extW.length; ++i) t -= extW[i]*extW[i]
+	let t = 1
+	for (let i=0; i<extW.length; ++i) {
+		if (extW[i] !==0 ) t -= extW[i] * extW[i]
+	}
 	// recover from float point error if very near 0
-	if (t<0) t+= Number.EPSILON || 2.2204460492503130808472633361816E-16
-	return Math.sqrt(t)
+	if (t > 0) return Math.sqrt(t)
+	if (t > -(Number.EPSILON || 2.22045E-16)) return 0
+	return NaN
 }
