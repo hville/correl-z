@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD022 MD024 MD026 MD032 MD041 -->
+<!-- markdownlint-disable MD012 MD022 MD024 MD026 MD032 MD041 -->
 
 # Change Log
 
@@ -8,6 +8,7 @@
 ## [Unreleased]
 ~~Removed, Changed, Deprecated, Added, Fixed, Security~~
 ~~Integrated cholesky decomposition~~
+
 
 ## [2.0.0] - 2017-01-08
 ### Changed
@@ -22,6 +23,7 @@
 ## [1.0.1] - 2016-10-19
 ### Fixed
 - Readme
+
 
 ## [1.0.0] - 2016-10-19
 ### Added
