@@ -26,19 +26,22 @@ var x0 = correlSeeder[0](iids),
 
 # API
 
-The module exports a single function that takes an array of linear factors to be applied to shared *standard normal*
+The module exports a single function that takes an array of linear factors or a key-factor object to be applied to shared *standard normal*
 *[Independent and identically distributed random_variables](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)*
 (iids) and returns a *standard normal* correlated random number generator.
 
-* `correlZ(arrayOfLinearWeights) => randomNumberGenerator`
-* `arrayOfLinearWeights`: array linear factor for each iid
-* `randomNumberGenerator(iids[, zSeed]) => randomNumber`
-* `iids`: array of iid values
-* `zSeed`: optional *standard normal* seed for testing. Normally generated internally
+ Name        | Type                         | Notes / Examples
+ :---        | :---                         | :------
+ `correlZ`   | `weights => randomFcn`       | `rand = correlZ({2:0.1, 1:0.2})`
+ `weights`   | `Object | Array`             | Σv²<1: `{1:0.2}`, `[0, 0.2]`, `{a: 0.2}`
+ `randomFcn` | `(iidZs [,selfZ]) => Number` | Zi<1: `sample = randomFcn({a:0.7, b:0.4})`
+ `iidZs`     | `Object | Array` of `zSeed`  | `{a:0.7, b:0.4}`
+ `selfZ`     | `zSeed`                      | optional *standard normal* seed for testing. Normally generated internally
+ `zSeed`     | `Number`                     | *standard normal* random seed `-1 < v < 1`
 
 Note that the linear iid weights can obtained from the correlation matrix with the
 [cholesky](https://www.npmjs.com/package/cholesky) module.
 
 # License
 
-Released under the [MIT License](http://www.opensource.org/licenses/MIT)
+[MIT](http://www.opensource.org/licenses/MIT) © [Hugo Villeneuve](https://github.com/hville)

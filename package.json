@@ -1,6 +1,6 @@
 {
   "name": "correl-z",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "correlated standard normal distribution random number generator",
   "keywords": [
     "Z", "unit normal", "standard normal",
